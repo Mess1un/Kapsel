@@ -14,6 +14,7 @@ const MENU = [
   { grup: null, label: "Pengumuman", href: "/admin/pengumuman" },
   { grup: null, label: "Galeri Kegiatan", href: "/admin/galeri" },
   { grup: "Akun", label: "Akun Saya", href: "/admin/akun" },
+  { grup: null, label: "Akun Admin", href: "/admin/pengguna" },
 ];
 
 export function MenuSamping({ namaSekolah, namaAdmin, pesanBaru }: {

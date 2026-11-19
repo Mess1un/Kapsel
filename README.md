@@ -23,7 +23,7 @@ Isi `.env.local` (dashboard Supabase → **Project Settings → API Keys**):
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://<project-ref>.supabase.co` | Tidak |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Kunci *Publishable* (`sb_publishable_...`) | Tidak (terlihat di browser, aman karena RLS) |
-| `SUPABASE_SECRET_KEY` | Kunci *Secret* (`sb_secret_...`) | **Ya** — hanya untuk skrip admin di komputer, jangan masuk ke Vercel/GitHub |
+| `SUPABASE_SECRET_KEY` | Kunci *Secret* (`sb_secret_...`) | **Ya** — untuk menu *Akun Admin* dan skrip `npm run admin:*`. Hanya dibaca server; jangan di-commit |
 
 ## Persiapan Supabase (sekali saja)
 
@@ -35,7 +35,7 @@ Isi `.env.local` (dashboard Supabase → **Project Settings → API Keys**):
    (Akun yang tidak ada di tabel `admin` memang tidak bisa mengubah apa pun, tetapi lebih baik dimatikan.)
 3. **Akun admin**:
    - Pindahkan akun lama Filament (kata sandi tetap sama): `npm run admin:pindah`
-   - Tambah admin baru: `npm run admin:tambah`
+   - Tambah admin baru: paling mudah lewat menu **Akun Admin** di panel (lihat di bawah), atau `npm run admin:tambah`
 
    Keduanya butuh `SUPABASE_SECRET_KEY` di `.env.local`. Login memakai email dalam huruf kecil.
 4. **Alamat tautan email** (untuk fitur lupa kata sandi): **Authentication → URL Configuration**
@@ -46,11 +46,22 @@ Isi `.env.local` (dashboard Supabase → **Project Settings → API Keys**):
    organisasi Supabase dan dibatasi beberapa email per jam. Agar email atur ulang sampai ke semua admin,
    atur SMTP sendiri di **Authentication → Emails → SMTP Settings** (misalnya Resend, Brevo, atau Gmail).
 
+## Menambah admin baru (cara mudah)
+
+1. Masuk ke panel admin → menu **Akun Admin**.
+2. Isi **Nama** dan **Email**, klik **Buat acak** untuk kata sandi sementara, lalu **+ Tambah admin**.
+3. Klik **Salin** pada kotak hijau dan kirim info masuk itu ke admin baru (misalnya lewat WhatsApp).
+4. Admin baru masuk di `/admin/login` lalu mengganti kata sandinya di menu **Akun Saya**.
+
+Di menu yang sama ada tombol **Atur ulang sandi** (membuat kata sandi baru untuk admin lain) dan **Hapus**.
+Akun sendiri tidak bisa dihapus, dan minimal harus tersisa satu admin.
+
 ## Lupa kata sandi / lupa akun
 
 - **Lupa kata sandi**: di halaman masuk klik *Lupa kata sandi atau email akun?*, isi email, lalu buka tautan
   dari email **di browser yang sama**. Admin diminta membuat kata sandi baru dan langsung masuk.
-- **Lupa email akun** atau **tidak bisa menerima email**: pengelola (yang memegang `SUPABASE_SECRET_KEY`) menjalankan
+- **Lupa email akun** atau **tidak bisa menerima email**: admin lain membuka menu **Akun Admin** untuk melihat
+  email semua admin dan menekan **Atur ulang sandi**. Tanpa panel, pengelola juga bisa menjalankan
   - `npm run admin:daftar` — melihat semua email admin dan kapan terakhir masuk;
   - `npm run admin:tambah` — isi email admin tersebut dengan kata sandi baru; kata sandinya langsung diganti.
 - Admin yang sudah masuk bisa mengganti kata sandinya sendiri di menu **Akun Saya**.
@@ -60,8 +71,8 @@ Isi `.env.local` (dashboard Supabase → **Project Settings → API Keys**):
 1. Push repo ke GitHub.
 2. Di [vercel.com](https://vercel.com) → **Add New → Project** → pilih repo `Kapsel-Web`.
 3. **Root Directory**: pilih `nextjs`. Framework otomatis terdeteksi sebagai Next.js.
-4. **Environment Variables**: isi `NEXT_PUBLIC_SUPABASE_URL` dan `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-   (**jangan** isi `SUPABASE_SECRET_KEY`).
+4. **Environment Variables**: isi `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, dan
+   `SUPABASE_SECRET_KEY` (centang hanya *Production*/*Preview*; tanpa kunci ini menu *Akun Admin* tidak aktif).
 5. Klik **Deploy**.
 
 Server Vercel diatur di region Mumbai (`bom1`, lihat `vercel.json`), dekat dengan database Supabase,

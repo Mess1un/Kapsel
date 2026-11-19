@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { adminSaatIni } from "@/lib/supabase/server";
 import { FormSandi } from "./FormSandi";
 
@@ -24,10 +25,10 @@ export default async function AkunSaya() {
       </div>
       <div className="kotak">
         <h2>Menambah admin lain</h2>
-        <p className="bantuan" style={{ margin: 0 }}>
-          Akun admin baru dibuat dari komputer pengelola dengan perintah <code>npm run admin:tambah</code> di folder{" "}
-          <code>nextjs</code> (lihat README). Akun yang dibuat lewat cara lain tidak otomatis menjadi admin.
+        <p className="bantuan" style={{ margin: "0 0 12px" }}>
+          Tambah, atur ulang kata sandi, atau hapus akun admin lain di menu Akun Admin.
         </p>
+        <Link className="tbl" href="/admin/pengguna">Buka Akun Admin →</Link>
       </div>
     </>
   );
