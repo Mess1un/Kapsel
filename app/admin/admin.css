@@ -188,9 +188,15 @@ dl.info dd { margin: 0; }
 
 /* Login */
 .adm-login { min-height: 100vh; display: grid; place-items: center; padding: 20px; }
-.adm-login .kotak { width: 100%; max-width: 380px; padding: 28px; }
-.adm-login h1 { text-align: center; }
-.adm-login p.sub { text-align: center; color: var(--teks-redup); margin-top: -6px; margin-bottom: 20px; }
+.adm-login .kotak { width: 100%; max-width: 480px; padding: 40px 40px 32px; font-size: 15px; box-shadow: 0 4px 24px rgba(16, 24, 40, .06); }
+.adm-login h1 { text-align: center; font-size: 26px; }
+.adm-login p.sub { text-align: center; color: var(--teks-redup); margin-top: -4px; margin-bottom: 24px; }
+.adm-login .isian > label { font-size: 14px; }
+.adm-login input { padding: 11px 12px; font-size: 15px; }
+.adm-login .tbl { padding: 11px 16px; font-size: 15px; }
+.adm-login .catatan { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--garis); color: var(--teks-redup); font-size: 14px; text-align: center; }
+.adm-login .catatan p { margin: 6px 0 0; }
+@media (max-width: 520px) { .adm-login .kotak { padding: 28px 22px; } }
 
 @media (max-width: 860px) {
   .adm-tata { grid-template-columns: 1fr; }

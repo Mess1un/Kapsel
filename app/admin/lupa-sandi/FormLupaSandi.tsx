@@ -31,9 +31,8 @@ export function FormLupaSandi() {
   if (status === "terkirim") {
     return (
       <div className="pesan-sukses" role="status">
-        Bila email tersebut terdaftar sebagai admin, tautan untuk membuat kata sandi baru sudah dikirim. Periksa kotak
-        masuk (dan folder Spam), lalu buka tautannya <strong>di browser yang sama</strong> dengan halaman ini.
-        Tautan berlaku 1 jam.
+        Kalau email tersebut terdaftar, tautannya sudah kami kirim. Cek kotak masuk atau folder Spam, lalu buka
+        tautannya <strong>di browser ini</strong>. Tautan hanya berlaku 1 jam.
       </div>
     );
   }
