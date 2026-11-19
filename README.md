@@ -1,7 +1,7 @@
-# Web Profil Sekolah — versi Next.js
+# Kapsel — Web Profil Sekolah
 
-Versi Next.js dari website sekolah (sebelumnya Laravel + Filament). Bisa di-deploy ke **Vercel**.
-Database dan foto tetap di **Supabase** yang sama dengan versi Laravel.
+Website profil sekolah dengan **Next.js** dan **Supabase** (database, login admin, dan penyimpanan foto).
+Bisa di-deploy ke **Vercel**. Versi lama (Laravel + Filament) diarsipkan di repo `Kapsel-Web`.
 
 - **Halaman publik**: `/`, `/profil`, `/guru`, `/pengumuman`, `/berita`, `/galeri`, `/ppdb`, `/kontak`
 - **Panel admin**: `/admin` (login dengan Supabase Auth)
@@ -11,7 +11,6 @@ Database dan foto tetap di **Supabase** yang sama dengan versi Laravel.
 Butuh **Node.js 20 atau lebih baru**.
 
 ```bash
-cd nextjs
 npm install
 cp .env.example .env.local   # lalu isi nilainya (lihat di bawah)
 npm run dev                  # buka http://localhost:3000
@@ -69,8 +68,8 @@ Akun sendiri tidak bisa dihapus, dan minimal harus tersisa satu admin.
 ## Deploy ke Vercel
 
 1. Push repo ke GitHub.
-2. Di [vercel.com](https://vercel.com) → **Add New → Project** → pilih repo `Kapsel-Web`.
-3. **Root Directory**: pilih `nextjs`. Framework otomatis terdeteksi sebagai Next.js.
+2. Di [vercel.com](https://vercel.com) → **Add New → Project** → pilih repo `Kapsel`.
+3. Framework otomatis terdeteksi sebagai Next.js (Root Directory biarkan kosong).
 4. **Environment Variables**: isi `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, dan
    `SUPABASE_SECRET_KEY` (centang hanya *Production*/*Preview*; tanpa kunci ini menu *Akun Admin* tidak aktif).
 5. Klik **Deploy**.
