@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 !.env.example
+
+# file panduan alat bantu editor (dibuat otomatis, tidak perlu di-commit)
+AGENTS.md
+CLAUDE.md
+.claude/
