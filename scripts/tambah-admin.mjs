@@ -1,4 +1,6 @@
-// Membuat akun admin baru (atau menjadikan akun yang sudah ada sebagai admin).
+// Membuat akun admin baru, atau MENGATUR ULANG kata sandi admin yang sudah ada
+// (isi email yang sama). Berguna bila admin lupa kata sandi dan tidak bisa
+// menerima email atur ulang.
 // Jalankan dari folder nextjs:  npm run admin:tambah
 // Butuh SUPABASE_SECRET_KEY di file .env.local (jangan dibagikan).
 

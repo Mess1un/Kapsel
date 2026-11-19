@@ -38,6 +38,22 @@ Isi `.env.local` (dashboard Supabase → **Project Settings → API Keys**):
    - Tambah admin baru: `npm run admin:tambah`
 
    Keduanya butuh `SUPABASE_SECRET_KEY` di `.env.local`. Login memakai email dalam huruf kecil.
+4. **Alamat tautan email** (untuk fitur lupa kata sandi): **Authentication → URL Configuration**
+   - *Site URL*: alamat website di Vercel, misalnya `https://kapsel-web.vercel.app`
+   - *Redirect URLs*: tambahkan `http://localhost:3000/admin/atur-sandi` dan
+     `https://<alamat-vercel>/admin/atur-sandi`
+5. **Pengirim email**: layanan email bawaan Supabase hanya mengirim ke email anggota tim di
+   organisasi Supabase dan dibatasi beberapa email per jam. Agar email atur ulang sampai ke semua admin,
+   atur SMTP sendiri di **Authentication → Emails → SMTP Settings** (misalnya Resend, Brevo, atau Gmail).
+
+## Lupa kata sandi / lupa akun
+
+- **Lupa kata sandi**: di halaman masuk klik *Lupa kata sandi atau email akun?*, isi email, lalu buka tautan
+  dari email **di browser yang sama**. Admin diminta membuat kata sandi baru dan langsung masuk.
+- **Lupa email akun** atau **tidak bisa menerima email**: pengelola (yang memegang `SUPABASE_SECRET_KEY`) menjalankan
+  - `npm run admin:daftar` — melihat semua email admin dan kapan terakhir masuk;
+  - `npm run admin:tambah` — isi email admin tersebut dengan kata sandi baru; kata sandinya langsung diganti.
+- Admin yang sudah masuk bisa mengganti kata sandinya sendiri di menu **Akun Saya**.
 
 ## Deploy ke Vercel
 

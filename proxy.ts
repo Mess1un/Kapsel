@@ -26,9 +26,13 @@ export async function proxy(request: NextRequest) {
   );
 
   const { data } = await supabase.auth.getUser();
-  const diHalamanLogin = request.nextUrl.pathname.startsWith("/admin/login");
+  // Halaman yang boleh dibuka tanpa login: masuk, lupa kata sandi, dan
+  // tujuan tautan atur ulang kata sandi dari email.
+  const halamanBebas = ["/admin/login", "/admin/lupa-sandi", "/admin/atur-sandi"].some((p) =>
+    request.nextUrl.pathname.startsWith(p),
+  );
 
-  if (!data.user && !diHalamanLogin) {
+  if (!data.user && !halamanBebas) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";
     url.search = "";

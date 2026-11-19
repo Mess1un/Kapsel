@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "admin:tambah": "node --env-file=.env.local scripts/tambah-admin.mjs",
-    "admin:pindah": "node --env-file=.env.local scripts/pindah-admin.mjs"
+    "admin:pindah": "node --env-file=.env.local scripts/pindah-admin.mjs",
+    "admin:daftar": "node --env-file=.env.local scripts/daftar-admin.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
